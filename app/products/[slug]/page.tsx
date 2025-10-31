@@ -1,18 +1,19 @@
+"use client";
 import Link from "next/link"; 
+import { useParams } from "next/navigation";
+import { use } from "react";
 
-interface ProductSlugProps {
-  params: Promise<{ slug: string }>;
-}
 
-export default async function ProductSlug({ params }: ProductSlugProps) {
-  const { slug } = await params; 
+
+export default  function ProductSlug(){
+  const params = useParams(); 
 
       return (
     <div>
       <Link href="/" style={{ margin: "20px" }}>Home</Link>
       <div style={{ textAlign: "center", marginTop: "50px" }}>
-        <h1>Product: {slug}</h1>
-        <p>This is the detail page for {slug}.</p>
+        <h1>Product: {params.slug}</h1>
+        <p>This is the detail page for {params.slug}.</p>
       </div>
     </div>
   );
